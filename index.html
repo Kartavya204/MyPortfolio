@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kartavya Kamone | Portfolio</title>
+<!-- AOS CDN -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
+
+  <!-- AOS & Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #0d0c2b, #12123E);
+      color: #fff;
+    }
+
+    nav {
+      background: #1c1c3c;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ddd;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #9b5de5;
+      text-shadow: 0 0 8px #9b5de5;
+    }
+
+    .firstSection {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 10%;
+      gap: 2rem;
+    }
+
+    .leftSection {
+      flex: 1;
+      font-size: 2.6rem;
+    }
+
+    .leftSection .purple {
+      color: #9b5de5;
+    }
+
+    .rightSection img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(117, 14, 214, 0.4);
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: #1e2167;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-right: 15px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #9b5de5;
+      color: #000;
+      border-color: #9b5de5;
+    }
+
+    section {
+      padding: 60px 10% 40px;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+    }
+
+    .about-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-img img {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 6px solid #9b5de5;
+      object-fit: cover;
+    }
+
+    .about-content {
+      max-width: 600px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #1e1e2f;
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+.project-card {
+  text-decoration: none; /* ensures no underline */
+  color: inherit; /* keep text colors defined inside the card */
+}
+
+.project-card h3,
+.project-card p {
+  text-decoration: none;
+}
+.project-grid a {
+  text-decoration: none;
+}
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      background: #292946;
+    }
+
+    .project-card h3 {
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #ccc;
+    }
+
+    #contact {
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social-icons img {
+      width: 36px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover img {
+      filter: drop-shadow(0 0 6px #9b5de5);
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #12123E;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+}
+
+.modal-content iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  color: black;
+  cursor: pointer;
+}
+.about-wrapper img:hover {
+  filter: drop-shadow(0 0 10px #00f5d4);
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Kartavya Kamone</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="firstSection">
+    <div class="leftSection">
+      Hi, I'm <span class="purple">Kartavya</span><br>
+and I'm a passionate<br>
+      <span class="purple" id="element"></span>
+      <div class="buttons">
+        <a href="KartavvyaKamone_Resume.pdf" class="btn" download>Download Resume</a>
+        <a href="https://github.com/your-github-username" class="btn" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <div class="rightSection">
+      <img src="images/bg.png" alt="Developer Image">
+    </div>
+  </section>
+
+ <section id="about" style="padding: 80px 20px; background: linear-gradient(to right, #0e0e2c, #1a1a4d);" data-aos="fade-up">
+  <h2 class="section-title" data-aos="fade-down" data-aos-delay="100" style="color: #ffd700; font-size: 3rem; text-align: center; margin-bottom: 10px;">
+    💡 About Me
+  </h2>
+  <p class="section-subtitle" style="text-align: center; color: #aaa; margin-bottom: 40px;">
+    Get to know the developer behind the code ✨
+  </p>
+
+  <div class="about-wrapper" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; justify-content: center; max-width: 1100px; margin: 0 auto;">
+    
+    <div class="about-img" style="flex: 1; text-align: center;" data-aos="zoom-in-right" data-aos-delay="200">
+      <img src="images/myphoto.webp" alt="Kartavya Kamone" style="
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        border: 5px solid transparent;
+        background-image: linear-gradient(#0e0e2c, #0e0e2c), linear-gradient(45deg, #9b5de5, #f15bb5, #fee440, #00f5d4);
+        background-clip: content-box, border-box;
+        background-origin: border-box;
+        object-fit: cover;
+        box-shadow: 0 0 25px rgba(117, 14, 214, 0.5);
+        transition: transform 0.4s ease-in-out;
+      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+
+    <div class="about-content" style="flex: 2; color: #f3f3f3;" data-aos="fade-left" data-aos-delay="300">
+      <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">👋 Hey there!</h3>
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+        I’m <strong>Kartavya Kamone</strong> — part developer, part designer, and a full-time tech enthusiast from <strong>Nagpur</strong>.
+        Currently pursuing my <strong>B.Tech in Computer Science</strong>, I turn ☕ + 💻 into real-world digital magic.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+        Whether it’s building clean UIs, solving tricky bugs, or chasing the latest frontend trends, I love creative problem-solving.
+        Smooth interfaces and elegant code are my happy place.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+        When I’m not coding, you’ll find me 🎥 editing videos, ✏️ sketching UI ideas, or ✨ geeking out on new tools and designs.
+        Passionate about <strong>Web Development</strong>, <strong>UI/UX</strong>, and bringing ideas to life.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8;">
+        Let’s build something great together! 🚀
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section id="projects" data-aos="fade-up">
+  <h2 class="section-title" data-aos="fade-down" data-aos-delay="100">🚀 My Projects</h2>
+  <p class="section-subtitle" data-aos="fade-up" data-aos-delay="150">
+    A curated list of applications and web solutions I've built.
+  </p>
+
+  <div class="project-grid">
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="200">
+      <h3>🌐 Club Activity Website</h3>
+      <p>A vibrant portal showcasing events, members, and achievements of college clubs.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="300">
+      <h3>☁️ Weather App</h3>
+      <p>Displays real-time weather data with sleek UI using the OpenWeatherMap API.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="400">
+      <h3>🧑‍💻 Personal Portfolio</h3>
+      <p>My digital identity — built with HTML, CSS, JS & some creativity.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="500">
+      <h3>📚 Library Management System</h3>
+      <p>Manage books, borrowers, returns, and availability with user-friendly interface.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="600">
+      <h3>🛒 E-Commerce Website</h3>
+      <p>Modern online store UI with cart features and responsive product listings.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="700">
+      <h3>🩺 Medical Survey Form</h3>
+      <p>Collects health data with clean design and front-end form validations.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="800">
+      <h3>✅ Task Management App</h3>
+      <p>Organize, edit, and track tasks with priority tagging and sleek UI.</p>
+    </a>
+
+    <a href="#" class="project-card" data-aos="zoom-in" data-aos-delay="900">
+      <h3>🎖️ Tribute Page</h3>
+      <p>Stylish one-page tribute to an inspirational figure with responsive layout.</p>
+    </a>
+  </div>
+</section>
+
+
+<section id="contact" style="padding: 100px 20px; background: radial-gradient(circle at top, #1c1c3c, #000021);" data-aos="fade-up">
+  <h2 class="section-title" style="color: #ffd700;" data-aos="fade-down" data-aos-delay="100">📬 Contact Me</h2>
+  <p style="text-align: center; color: #ccc; font-size: 1.2rem;" data-aos="fade-up" data-aos-delay="200">
+    Let’s build something cool together. Reach out via the links below or drop a message! 💬
+  </p>
+
+  <div class="social-icons" style="display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap;">
+    <a href="#" data-aos="zoom-in" data-aos-delay="300">
+      <img src="images/instagram.png" alt="Instagram" style="width: 40px; transition: transform 0.3s ease;">
+    </a>
+    <a href="#" data-aos="zoom-in" data-aos-delay="400">
+      <img src="images/linkedin.png" alt="LinkedIn" style="width: 40px; transition: transform 0.3s ease;">
+    </a>
+    <a href="#" data-aos="zoom-in" data-aos-delay="500">
+      <img src="images/github.png" alt="GitHub" style="width: 40px; transition: transform 0.3s ease;">
+    </a>
+  </div>
+
+  <div style="text-align:center; margin-top: 40px;" data-aos="fade-up" data-aos-delay="600">
+    <a href="javascript:void(0)" class="btn" onclick="openModal()" style="
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #9b5de5, #00f5d4);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+    ">
+      ✍️ Fill Contact Form
+    </a>
+  </div>
+</section>
+
+<!-- Modal for Contact Form -->
+<div id="formModal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8);">
+  <div class="modal-content" style="
+    background:white;
+    margin:5% auto;
+    padding:20px;
+    border-radius:10px;
+    width:90%;
+    max-width:700px;
+    position:relative;
+  ">
+    <span class="close" onclick="closeModal()" style="position:absolute; top:10px; right:20px; font-size:28px; color:black; cursor:pointer;">&times;</span>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdyFGt8S8dRsUN2RNzsEc9Jd4kbN8FfMGeH25OI_yUsJkNl_Q/viewform?usp=sharing&ouid=113441806960665502270 style="width:100%; height:500px; border:none;"></iframe>
+  </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+            width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+</div>
+
+
+  <footer>
+    &copy; 2025 Kartavya Kamone | All Rights Reserved.
+  </footer>
+ <script>
+  function openModal() {
+    document.getElementById("formModal").style.display = "block";
+  }
+  function closeModal() {
+    document.getElementById("formModal").style.display = "none";
+  }
+  window.onclick = function (e) {
+    const modal = document.getElementById("formModal");
+    if (e.target === modal) modal.style.display = "none";
+  };
+</script>
+
+  <!-- Typed.js Effect -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#element', {
+      strings: ['Web Developer', 'UI/UX Designer', 'Video Editor'],
+      typeSpeed: 60,
+      backSpeed: 30,
+      loop: true
+    });
+  </script>
+
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+  <script>
+  function openModal() {
+    document.getElementById("formModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("formModal").style.display = "none";
+  }
+
+  window.onclick = function(e) {
+    const modal = document.getElementById("formModal");
+    if (e.target === modal) modal.style.display = "none";
+  }
+</script>
+<!-- AOS Animation -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 120,
+  });
+</script>
+
+</body>
+</html>
