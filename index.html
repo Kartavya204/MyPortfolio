@@ -26,38 +26,85 @@
       color: #fff;
       scroll-behavior: smooth;
     }
-    nav {
-      background: #1c1c3c;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 5%;
-      height: 80px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    nav .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #ffd700;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #ddd;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-    nav ul li a:hover {
-      color: #9b5de5;
-      text-shadow: 0 0 8px #9b5de5;
-    }
+    /* Base Styles */
+nav.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1c1c3c;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
+    text-align: center;
+    display: none;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+  }
+}
+
     .firstSection {
       display: flex;
       flex-wrap: wrap;
@@ -137,23 +184,39 @@
       text-align: center;
     }
     .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-    .project-card {
-      background: #1e1e2f;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      text-decoration: none;
-      color: inherit;
-      transition: 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      background: #292946;
-    }
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.project-card {
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: #9f79ff;
+}
+
+.project-card p {
+  color: #ccc;
+  margin-bottom: 0;
+}
+
     #contact {
       text-align: center;
       padding: 60px 10% 40px;
@@ -194,17 +257,52 @@
         grid-template-columns: 1fr;
       }
     }
+    /* Distinct Style for Info Card */
+.project-info-card {
+  background: linear-gradient(135deg, #2e2e5d, #3f0d7d);
+  color: #fff;
+  border: 2px dashed #ffd700;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.2);
+}
+
+.project-info-card .resume-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #ffd700;
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.project-info-card .resume-btn:hover {
+  background-color: #f1c40f;
+}
   </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">Kartavya Kamone</div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <nav class="navbar">
+  <div class="logo">Kartavya Kamone</div>
+
+  <!-- Hamburger Icon -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
 
   <section class="firstSection">
     <div class="leftSection">
@@ -301,7 +399,16 @@ and I'm a passionate<br>
       <p>Organize, edit, and track tasks with priority tagging and sleek UI.</p>
     </a>
 
+    
+   
+    
+
   </div>
+   <div class="project-info-card" data-aos="fade-up" data-aos-delay="1000">
+      <h3>📄 For More Information</h3>
+      <p>Download my resume to explore more projects, skills, and experience.</p>
+      <a href="KartavvyaKamone_Resume.pdf" target="_blank" class="resume-btn">View Resume</a>
+    </div>
 </section>
 
 
@@ -359,7 +466,7 @@ and I'm a passionate<br>
     <!-- Use only this iframe with your real Google Form embed link -->
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdyFGt8S8dRsUN2RNzsEc9Jd4kbN8FfMGeH25OI_yUsJkNl_Q/viewform" 
    class="btn" target="_blank" rel="noopener">
-  ✍️ Fill Contact Form
+  ✍️Click here for Contact Form
 </a>
 
   </div>
@@ -415,6 +522,11 @@ and I'm a passionate<br>
     once: true,
     offset: 100
   });
+</script>
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
 </script>
 
 </body>
